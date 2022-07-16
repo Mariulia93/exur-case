@@ -6,16 +6,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+:root {
+  --dark-blue: #0540F2;
+  --light-blue: #6BBEF2;
+  --middle-blue: #4E5B87;
+  --grey: #F2F2F2;
+  --dark-grey: #64646C;
+  
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
+
 .App{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 2rem 4rem;
+  gap: 5rem;
 }
 .ProductOverview{
   display: flex;
@@ -23,11 +29,37 @@ code {
 }
 .ProductOverviewGrid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content:space-around;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  justify-content: center;
+  gap: 2rem;
 }
 .ProductBox{
-  max-width: 200px;
+ display: flex;
+ flex-direction: column;
+ margin: 1rem;
+
+}
+.blueTitle{
+  color:var(--dark-blue);
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
+.categoryP{
+  margin: 0;
+  padding: 0;
+}
+.ImgSize{
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+  
+}
+.blueH{
+  font-size: 2.5rem;
+  color: var(--dark-blue);
 }
 .DropDownMenu{
   padding: 0.5rem;
@@ -38,5 +70,33 @@ code {
 .ArrowBottom{
   display: inline-block;
   vertical-align: bottom;
+  margin-right: 0.5rem;
  
+}
+.lightp{
+  font-size: 1.2rem;
+  color: var(--dark-grey);
+}
+.freeP{
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--dark-grey);
+}
+.SogProd{
+  height: 1.5rem;
+  width: 20rem;
+  padding: 0.5rem;
+}
+.boldFilter{
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.FilterByProduct{
+  border-bottom: 1px solid var(--grey);
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+input{
+  margin-right: 0.5rem;
 }

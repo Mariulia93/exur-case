@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     console.log(products);
   }, [products]);
-
+ 
   return (
     <div className="App">
       <ProductFilter />

@@ -1,10 +1,27 @@
 import Product from "./Product";
+import { useState, useEffect } from "react";
+const axios = require("axios").default;
 
 export default function ProductOverview({ products }) {
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://pfp-public-productdb-api.azurewebsites.net/api/picture/{{id}}"
+      )
+      .then((response) => {setImages(response.data.results);
+    })
+    .catch(function (error){
+        console.log("no images");
+    });
+  }, []);
+  useEffect(() => {
+    console.log(images);
+  });
   return (
     <div className="ProductOverview">
       <section>
-        <h1>Se farlige og mangelfulde produkter</h1>
+        <h1 className="blueH">Se farlige og mangelfulde produkter</h1>
         <p>
           Når myndigheder i Danmark og resten af EU opdager et farligt eller et
           mangelfuldt produkt, offentliggør danske myndigheder information om de
@@ -20,7 +37,7 @@ export default function ProductOverview({ products }) {
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
-            fill="currentColor"
+            fill="#0540F2"
             className="bi bi-arrow-down-square ArrowBottom"
             viewBox="0 0 16 16"
           >
@@ -33,7 +50,7 @@ export default function ProductOverview({ products }) {
       </section>
       <section className="ProductOverviewGrid">
         {products.map((p) => (
-          <Product {...p} />
+          <Product {...p} images={images}/>
         ))}
       </section>
     </div>
